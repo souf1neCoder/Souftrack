@@ -22,7 +22,7 @@ class AuthService{
             ]);
             $account = Account::create([
                 'user_id' => $user->id,
-                'account_image' => 'https://avatars.dicebear.com/api/pixel-art-neutral/' . $user->username . '.svg'
+                'account_image' => env('AVATAR_API') . $user->username
             ]);
             Category::where('is_default',true)->get()->each(function ($category) use ($account) {
                 AccountCategory::create([

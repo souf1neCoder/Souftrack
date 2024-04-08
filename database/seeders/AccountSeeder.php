@@ -19,7 +19,7 @@ class AccountSeeder extends Seeder
         $users = User::query()->select('id','username')->get();
         $users->each(function($user){
             Account::factory()->create([
-                'account_image'=> 'https://avatars.dicebear.com/api/pixel-art-neutral/' . $user['username'] . '.svg',
+                'account_image'=> env('AVATAR_API') . $user['username'],
                 'user_id'=>$user['id']
             ]);
         });
